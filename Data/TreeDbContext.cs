@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TestAPI.Entities.Journals;
-using TestAPI.Entities.Trees;
+using Domain.Entities.Journals;
+using Domain.Entities.Trees;
 
-namespace TestAPI.Data
+namespace Data
 {
     public class TreeDbContext : DbContext
     {

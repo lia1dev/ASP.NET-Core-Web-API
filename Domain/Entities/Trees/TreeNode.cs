@@ -1,0 +1,40 @@
+﻿using Domain.Entities.Base;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Domain.Entities.Trees
+{
+    /// <summary>
+    /// Tree node entity
+    /// </summary>
+    public class TreeNode : BaseEntity
+    {
+        /// <summary>
+        /// Node name required field
+        /// </summary>
+        [Required]
+        public required string Name { get; set; }
+
+        /// <summary>
+        /// Foreign key to parent node (for root - null)
+        /// </summary>
+        public long? ParentNodeId { get; set; }
+
+        [ForeignKey("ParentNodeId")]
+        public TreeNode? ParentNode { get; set; }
+
+        /// <summary>
+        /// Foreign key to Tree ID
+        /// </summary>
+        [Required]
+        public long TreeId { get; set; }
+
+        [ForeignKey("TreeId")]
+        public Tree Tree { get; set; }
+
+        /// <summary>
+        /// Child nodes collection
+        /// </summary>
+        public IList<TreeNode> Children { get; set; } = new List<TreeNode>();
+    }
+}
